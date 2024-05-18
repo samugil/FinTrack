@@ -1,6 +1,5 @@
 package com.example.fintrack.data
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -9,7 +8,7 @@ import androidx.room.Query
 import androidx.room.Update
 
 @Dao
-interface AppDao {
+interface CategoryDao {
 
     // Operações relacionadas à tabela de categorias
     @Query("SELECT * FROM Category ORDER BY id DESC LIMIT 1")

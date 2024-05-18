@@ -1,13 +1,13 @@
 package com.example.fintrack.data
 
-import android.media.Image
+
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "Category")
 data class Category(
-    @PrimaryKey val id: Int = 1,
+    @PrimaryKey (autoGenerate = true) val id: Int = 0,
     val title: String,
-    val color: String,
-    val icon: Image
+    val color: Int,
+    val icon: Int
 )
