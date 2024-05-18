@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class Expenses(
     @PrimaryKey val id: Int = 1,
-    val categoryTitle: String,
+    val categoryId: Int,
     val title: String,
     val price: Double
 )
