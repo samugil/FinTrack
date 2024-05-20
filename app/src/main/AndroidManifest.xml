@@ -16,14 +16,16 @@
             android:name=".presentation.FinTrackActivity"
             android:exported="false" />
         <activity
+            android:name=".presentation.CategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.IconCategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.ColorCategoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.FinTrackSplashScreen"
-            android:name=".IconCategoryActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ColorCategoryActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CategoryActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

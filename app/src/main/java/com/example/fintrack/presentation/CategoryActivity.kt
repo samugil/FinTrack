@@ -1,4 +1,4 @@
-package com.example.fintrack
+package com.example.fintrack.presentation
 
 import android.app.Activity
 import android.content.Intent
@@ -55,7 +55,7 @@ class CategoryActivity : AppCompatActivity() {
             if (title.isNotEmpty() && selectedColor != 0 && selectedIcon != 0) {
                 val category = Category(title = title, color = selectedColor, icon = selectedIcon)
                 val db = AppDataBase.getInstance(this)
-                db.categoryDao().insertCategory(category)
+                db.AppDataBase.Dao().insertCategory(category)
                 setResult(Activity.RESULT_OK)
                 finish()
             }
