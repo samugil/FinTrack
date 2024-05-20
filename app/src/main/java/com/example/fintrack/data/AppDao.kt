@@ -11,30 +11,31 @@ import androidx.room.Update
 interface CategoryDao {
 
     // Operações relacionadas à tabela de categorias
-    @Query("SELECT * FROM Category ORDER BY id DESC LIMIT 1")
-    fun getAllCategories(): List<Category>
+    @Query("SELECT * FROM Category ORDER BY id DESC")
+    fun getAllCategories(): LiveData<List<Category>>
+
+    @Query("SELECT * FROM Category WHERE id = :id")
+    fun getCategoryById(id: Int): Category
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertCategory(title: Category)
+    fun insertCategory(category: Category)
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    fun updateCategory(title: Category)
+    fun updateCategory(category: Category)
 
     @Delete
-    fun deleteCategory(title: Category)
+    fun deleteCategory(category: Category)
 
-
-    // Operações relacionadas à tabela de tarefas
-    @Query("SELECT * FROM Expenses ORDER BY id DESC LIMIT 1")
+    // Operações relacionadas à tabela de despesas
+    @Query("SELECT * FROM Expenses ORDER BY id DESC")
     fun getAllExpenses(): List<Expenses>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertExpenses(title: Expenses)
+    fun insertExpenses(expense: Expenses)
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    fun updateExpenses(title: Expenses)
+    fun updateExpenses(expense: Expenses)
 
     @Delete
-    fun deleteExpenses(title: Expenses)
-
+    fun deleteExpenses(expense: Expenses)
 }

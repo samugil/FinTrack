@@ -3,7 +3,11 @@
     <style name="Base.Theme.FinTrack" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+        <item name="android:windowIsTranslucent">true</item>
+
     </style>
 
+    // linha para remover a splash screen padrão do android
     <style name="Theme.FinTrack" parent="Base.Theme.FinTrack" />
 </resources>

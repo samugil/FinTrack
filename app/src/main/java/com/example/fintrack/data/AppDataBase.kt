@@ -6,12 +6,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Category::class, Expenses::class], version = 1)
+@Database(entities = [Category::class,Expenses::class], version = 2)
 abstract class AppDataBase : RoomDatabase(){
 
-    abstract fun categoryDao(): CategoryDao
-
-    abstract fun expensesDao(): ExpensesDao
+    abstract fun expensesDao(): AppDao
 
     companion object {
         @Volatile
@@ -22,16 +20,12 @@ abstract class AppDataBase : RoomDatabase(){
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDataBase::class.java,
-                    "fintrack_database"
+                    "app_database"
                 ).build()
                 INSTANCE = instance
                 instance
             }
         }
     }
-
-}
-
-class ExpensesDao {
 
 }

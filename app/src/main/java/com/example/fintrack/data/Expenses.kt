@@ -3,10 +3,10 @@ package com.example.fintrack.data
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity (tableName = "expenses")
+@Entity
 data class Expenses(
-    @PrimaryKey (autoGenerate = true) val id: Int = 0,
-    val categoryTitle: String,
+    @PrimaryKey val id: Int = 1,
+    val categoryId: Int,
     val title: String,
     val price: Double
 )

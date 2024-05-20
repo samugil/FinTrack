@@ -51,10 +51,21 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    //Implementação do room e da recyclerview
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.0")
+    implementation("androidx.room:room-runtime:2.4.0")
+    kapt("androidx.room:room-compiler:2.4.0")
+    implementation("androidx.core:core-ktx:1.8.0")
+    implementation("androidx.appcompat:appcompat:1.4.0")
+    implementation("com.google.android.material:material:1.6.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0")
+
     //Room
-    kapt(libs.room.compiler)
-    implementation(libs.room.runtime)
-    implementation(libs.room.paging)
-    implementation(libs.room.ktx)
+    //kapt(libs.room.compiler)
+    //implementation(libs.room.runtime)
+    //implementation(libs.room.paging)
+    //implementation(libs.room.ktx)
 
 }
