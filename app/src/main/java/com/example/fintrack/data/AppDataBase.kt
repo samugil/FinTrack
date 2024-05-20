@@ -1,15 +1,14 @@
 package com.example.fintrack.data
 
 import android.content.Context
-import androidx.room.Dao
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Category::class],[Expenses::class], version = 1)
+@Database(entities = [Category::class,Expenses::class], version = 2)
 abstract class AppDataBase : RoomDatabase(){
 
-    abstract fun Dao(): AppDao
+    abstract fun expensesDao(): AppDao
 
     companion object {
         @Volatile

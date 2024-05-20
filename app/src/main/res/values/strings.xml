@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">FinTrack</string>
+
+    <string name="category_icon">Category Icon</string>
 </resources>
