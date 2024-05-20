@@ -91,4 +91,19 @@
         android:layout_marginStart="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_select_color_category" />
+
+
+    <Button
+        android:id="@+id/btn_icon_select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Select color"
+        android:textSize="20sp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_color_select" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

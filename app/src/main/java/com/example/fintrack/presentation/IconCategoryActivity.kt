@@ -25,7 +25,7 @@ class IconCategoryActivity : AppCompatActivity() {
 
             if (selectedIcon != 0) {
                 val resultIntent = Intent ()
-                resultIntent.putExtra ("selectedIcon", selectedIcon)
+                resultIntent.putExtra("selectedIcon", selectedIcon)
                 setResult(Activity.RESULT_OK, resultIntent)
                 finish()
             }

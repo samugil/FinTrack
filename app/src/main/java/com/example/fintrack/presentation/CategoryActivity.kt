@@ -10,7 +10,6 @@ import com.example.fintrack.data.AppDataBase
 import com.example.fintrack.data.Category
 import com.example.fintrack.databinding.ActivityCategoryBinding
 
-
 class CategoryActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCategoryBinding
@@ -35,7 +34,7 @@ class CategoryActivity : AppCompatActivity() {
 
         iconActivityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
-                selectedIcon = result.data?.getIntExtra("SelectedIcon", 0) ?: 0
+                selectedIcon = result.data?.getIntExtra("selectedIcon", 0) ?: 0
                 // Update the UI to reflect the selected icon
             }
         }
@@ -45,7 +44,7 @@ class CategoryActivity : AppCompatActivity() {
             colorActivityResultLauncher.launch(intent)
         }
 
-        binding.btnIcon.setOnClickListener {
+        binding.btnIconSelect.setOnClickListener {
             val intent = Intent(this, IconCategoryActivity::class.java)
             iconActivityResultLauncher.launch(intent)
         }
@@ -53,14 +52,13 @@ class CategoryActivity : AppCompatActivity() {
         binding.btnCategoryCreate.setOnClickListener {
             val title = binding.tilNewCategory.editText?.text.toString()
             if (title.isNotEmpty() && selectedColor != 0 && selectedIcon != 0) {
-                val category = Category(title = title, color = selectedColor, icon = selectedIcon)
+                val category = Category(title = title, color = selectedColor.toString(), icon = selectedIcon)
                 val db = AppDataBase.getInstance(this)
-                db.AppDataBase.Dao().insertCategory(category)
+                db.expensesDao().insertCategory(category)
                 setResult(Activity.RESULT_OK)
                 finish()
             }
         }
-
     }
 
     companion object {
