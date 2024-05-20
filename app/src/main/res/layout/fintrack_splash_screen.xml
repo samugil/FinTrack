@@ -8,10 +8,9 @@
 
     <ImageView
         android:id="@+id/splashScreen"
-        android:layout_width="201dp"
-        android:layout_height="268dp"
-        android:contentDescription="TODO"
-        android:src="@drawable/ic_logo_background"
+        android:layout_width="231dp"
+        android:layout_height="294dp"
+        android:src="@drawable/splashscreen"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
