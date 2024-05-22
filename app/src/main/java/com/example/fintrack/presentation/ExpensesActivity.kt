@@ -1,4 +1,4 @@
-package com.example.fintrack
+package com.example.fintrack.presentation
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.fintrack.R
 
 class ExpensesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +29,7 @@ class ExpensesActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
+        super.onBackPressed()
         val builder = AlertDialog.Builder(this)
         builder.setMessage("Tem certeza que deseja cancelar inclusão?")
             .setCancelable(false)
