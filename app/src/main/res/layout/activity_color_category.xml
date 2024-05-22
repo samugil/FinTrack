@@ -136,7 +136,7 @@
                 android:background="@drawable/oval_light_yellow"/>
 
             <RadioButton
-                android:id="@+id/rb_water_mediun_yellow"
+                android:id="@+id/rbWaterMediumYellow"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="25dp"
@@ -164,7 +164,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/rg_color3">
 
                 <RadioButton
-                    android:id="@+id/rb_mediun_orange"
+                    android:id="@+id/rbMediumOrange"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_marginStart="16dp"
@@ -188,7 +188,7 @@
                     android:background="@drawable/oval_grey"/>
 
                 <RadioButton
-                    android:id="@+id/rb_margent"
+                    android:id="@+id/rbMagenta"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_marginStart="25dp"

@@ -2,6 +2,7 @@ package com.example.fintrack.presentation
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -10,10 +11,12 @@ import com.example.fintrack.data.AppDataBase
 import com.example.fintrack.data.Category
 import com.example.fintrack.databinding.ActivityCategoryBinding
 
+
 class CategoryActivity : AppCompatActivity() {
 
+
     private lateinit var binding: ActivityCategoryBinding
-    private var selectedColor: Int = 0
+    private var selectedColor: Int = Color.TRANSPARENT
     private var selectedIcon: Int = 0
 
     private lateinit var colorActivityResultLauncher: ActivityResultLauncher<Intent>
@@ -24,18 +27,18 @@ class CategoryActivity : AppCompatActivity() {
         binding = ActivityCategoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Register the ActivityResultLaunchers
+
         colorActivityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
-                selectedColor = result.data?.getIntExtra("selectedColor", 0) ?: 0
-                // Update the UI to reflect the selected color
+                selectedColor = result.data?.getIntExtra("selectedColor", Color.TRANSPARENT) ?: Color.TRANSPARENT
+                updateColorPreview() // Atualiza a pré-visualização da cor
             }
         }
 
         iconActivityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 selectedIcon = result.data?.getIntExtra("selectedIcon", 0) ?: 0
-                // Update the UI to reflect the selected icon
+                updateIconPreview() // Atualiza a pré-visualização do ícone
             }
         }
 
@@ -51,7 +54,7 @@ class CategoryActivity : AppCompatActivity() {
 
         binding.btnCategoryCreate.setOnClickListener {
             val title = binding.tilNewCategory.editText?.text.toString()
-            if (title.isNotEmpty() && selectedColor != 0 && selectedIcon != 0) {
+            if (title.isNotEmpty() && selectedColor != Color.TRANSPARENT && selectedIcon != 0) {
                 val category = Category(title = title, color = selectedColor.toString(), icon = selectedIcon)
                 val db = AppDataBase.getInstance(this)
                 db.expensesDao().insertCategory(category)
@@ -61,8 +64,13 @@ class CategoryActivity : AppCompatActivity() {
         }
     }
 
-    companion object {
-        const val REQUEST_COLOR = 1
-        const val REQUEST_ICON = 2
+    private fun updateColorPreview() {
+        binding.imgColorCategory.setBackgroundColor(selectedColor)
     }
+
+    private fun updateIconPreview() {
+        if (selectedIcon != 0) {
+            binding.imgIconCategory.setImageResource(selectedIcon)
+        }
+   }
 }

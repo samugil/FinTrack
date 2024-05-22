@@ -19,13 +19,23 @@ class IconCategoryActivity : AppCompatActivity() {
             val selectedIcon = when {
                 binding.rbFuel.isChecked -> R.drawable.ic_gas_station
                 binding.rbWifi.isChecked -> R.drawable.ic_wifi
-                // Continue with other radio buttons
+                binding.rbElectricity.isChecked -> R.drawable.ic_electricity
+                binding.rbCar.isChecked -> R.drawable.ic_car
+                binding.rbCreditCard.isChecked -> R.drawable.ic_credit_card
+                binding.rbKey.isChecked -> R.drawable.ic_key
+                binding.rbShoppingCart.isChecked -> R.drawable.ic_shopping_cart
+                binding.rbWaterDrop.isChecked -> R.drawable.ic_water_drop
+                binding.rbHome.isChecked -> R.drawable.ic_home
+                binding.rbGameControl.isChecked -> R.drawable.ic_game_control
+                binding.rbClothes.isChecked -> R.drawable.ic_clothes
+                binding.rbGraphic.isChecked -> R.drawable.ic_graphic
                 else -> 0
             }
 
-            if (selectedIcon != 0) {
-                val resultIntent = Intent ()
-                resultIntent.putExtra("selectedIcon", selectedIcon)
+            if (selectedIcon != 0){
+                val resultIntent = Intent().apply {
+                    putExtra("selectedIcon", selectedIcon)
+                }
                 setResult(Activity.RESULT_OK, resultIntent)
                 finish()
             }
