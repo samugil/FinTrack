@@ -1,8 +1,12 @@
 package com.example.fintrack.presentation
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.LinearLayout
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,13 +18,16 @@ import com.example.fintrack.presentation.viewmodel.FinTrackAdapter
 import com.example.fintrack.presentation.viewmodel.FinTrackViewModelFactory
 import com.example.fintrack.repository.FinTrackRepository
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.navigation.NavigationView
 
-class FinTrackActivity : AppCompatActivity() {
+class FinTrackActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var viewModel: FinTrackViewModel
     private lateinit var expensesAdapter: FinTrackAdapter
     private lateinit var ctnContent: LinearLayout
     private lateinit var rvExpenses: RecyclerView
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navView: NavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +36,16 @@ class FinTrackActivity : AppCompatActivity() {
         ctnContent = findViewById(R.id.ctn_content) // Ajuste o id para o layout correto
         rvExpenses = findViewById(R.id.rv_expenses_list)
         val btnAdd: FloatingActionButton = findViewById(R.id.btn_add)
+        drawerLayout = findViewById(R.id.drawer_layout)
+        navView = findViewById(R.id.nav_view)
+
+        val toggle = ActionBarDrawerToggle(
+            this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close
+        )
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        navView.setNavigationItemSelectedListener(this)
 
         // Inicializando o ViewModel usando ViewModelProvider
         val repository = FinTrackRepository(AppDataBase.getInstance(this).expensesDao())
@@ -60,5 +77,28 @@ class FinTrackActivity : AppCompatActivity() {
         btnAdd.setOnClickListener {
             // Lógica para adicionar uma nova despesa
         }
+    }
+    override fun onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+        }
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.nav_home -> {
+                // Handle the home action
+            }
+            R.id.nav_categories -> {
+                // Handle the categories action
+            }
+            R.id.nav_settings -> {
+                // Handle the settings action
+            }
+        }
+        drawerLayout.closeDrawer(GravityCompat.START)
+        return true
     }
 }
