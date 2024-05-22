@@ -38,15 +38,24 @@
         android:layout_width="10dp"
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="@+id/til_new_category"
+        app:layout_constraintEnd_toStartOf="@+id/img_icon_category"
+        app:layout_constraintTop_toTopOf="@+id/til_new_category" />
+
+    <ImageView
+        android:id="@+id/img_icon_category"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
         app:layout_constraintEnd_toStartOf="@+id/til_new_category"
-        app:layout_constraintTop_toTopOf="@+id/til_new_category"/>
+        app:layout_constraintBottom_toBottomOf="@+id/til_new_category"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/til_new_category" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_new_category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="91dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,7 +86,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="50dp"
-        android:hint="Select the color of your category"
+        android:hint="Select the color and icon of your category"
         android:background="@android:color/transparent"
         app:layout_constraintTop_toBottomOf="@+id/til_new_category" />
 
@@ -97,13 +106,14 @@
         android:id="@+id/btn_icon_select"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
-        android:text="Select color"
+        android:layout_marginStart="67dp"
+        android:text="Select icon"
         android:textSize="20sp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_color_select" />
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_color_select"
+        app:layout_constraintTop_toBottomOf="@+id/edt_select_color_category" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

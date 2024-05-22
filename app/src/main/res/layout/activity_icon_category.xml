@@ -20,188 +20,158 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-
     <RadioGroup
-        android:id="@+id/rg_icon1"
+        android:id="@+id/rg_icon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:orientation="vertical"
         android:layout_marginTop="40dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_icon">
+        app:layout_constraintTop_toBottomOf="@id/tv_icon"
+        android:gravity="center">
 
-        <RadioButton
-        android:id="@+id/rb_fuel"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_margin="16dp"
-        android:background="@drawable/ic_gas_station"
-        android:button="@null"
-        app:layout_constraintEnd_toStartOf="@+id/rb_wifi"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rg_icon1" />
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
 
-    <RadioButton
-        android:id="@+id/rb_wifi"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_margin="16dp"
-        android:background="@drawable/ic_wifi"
-        android:button="@null"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rg_icon1" />
+            <RadioButton
+                android:id="@+id/rbFuel"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="16dp"
+                android:drawableTop="@drawable/ic_gas_station"
+                android:background="@drawable/selector_icon_background"
+                android:button="@null" />
 
-    <RadioButton
-        android:id="@+id/rb_electricity"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_margin="16dp"
-        android:background="@drawable/ic_electricity"
-        android:button="@null"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/rb_wifi"
-        app:layout_constraintTop_toBottomOf="@+id/rg_icon1" />
-    </RadioGroup>
+            <RadioButton
+                android:id="@+id/rbWifi"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="16dp"
+                android:drawableTop="@drawable/ic_wifi"
+                android:background="@drawable/selector_icon_background"
+                android:button="@null" />
 
-    <RadioGroup
-        android:id="@+id/rg_icon2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/rg_icon1">
+            <RadioButton
+                android:id="@+id/rbElectricity"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="16dp"
+                android:drawableTop="@drawable/ic_electricity"
+                android:background="@drawable/selector_icon_background"
+                android:button="@null" />
+        </RadioGroup>
 
-        <RadioButton
-            android:id="@+id/car"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@drawable/ic_car"
-            android:button="@null"
-            android:layout_marginEnd="33dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/rg_icon2" />
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
 
-        <RadioButton
-            android:id="@+id/credit_card"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:button="@null"
-            android:background="@drawable/ic_credit_card"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rg_icon2"/>
+            <RadioButton
+                android:id="@+id/rbCar"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="16dp"
+                android:drawableTop="@drawable/ic_car"
+                android:background="@drawable/selector_icon_background"
+                android:button="@null" />
 
-        <RadioButton
-            android:id="@+id/key"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:button="@null"
-            android:background="@drawable/ic_key"
-            android:layout_marginStart="33dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rg_icon2"/>
-    </RadioGroup>
+            <RadioButton
+                android:id="@+id/rbCreditCard"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="16dp"
+                android:drawableTop="@drawable/ic_credit_card"
+                android:background="@drawable/selector_icon_background"
+                android:button="@null" />
 
-    <RadioGroup
-        android:id="@+id/rg_icon3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/rg_icon2">
+            <RadioButton
+                android:id="@+id/rbKey"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="16dp"
+                android:drawableTop="@drawable/ic_key"
+                android:background="@drawable/selector_icon_background"
+                android:button="@null" />
+        </RadioGroup>
 
-        <RadioButton
-            android:id="@+id/shopping_car"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginEnd="33dp"
-            android:background="@drawable/ic_shopping_cart"
-            android:button="@null"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/rg_icon3"/>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
 
-        <RadioButton
-            android:id="@+id/water_drop"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:button="@null"
-            android:background="@drawable/ic_water_drop"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rg_icon2"/>
-        
-        <RadioButton
-            android:id="@+id/home"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:button="@null"
-            android:background="@drawable/ic_home"
-            android:layout_marginStart="33dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rg_icon2"/>
-    </RadioGroup>
+            <RadioButton
+                android:id="@+id/rbShoppingCart"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="16dp"
+                android:drawableTop="@drawable/ic_shopping_cart"
+                android:background="@drawable/selector_icon_background"
+                android:button="@null" />
 
-    <RadioGroup
-        android:id="@+id/rg_icon4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/rg_icon3">
+            <RadioButton
+                android:id="@+id/rbWaterDrop"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="16dp"
+                android:drawableTop="@drawable/ic_water_drop"
+                android:background="@drawable/selector_icon_background"
+                android:button="@null" />
 
-        <RadioButton
-            android:id="@+id/game_control"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginEnd="33dp"
-            android:background="@drawable/ic_game_control"
-            android:button="@null"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/rg_icon4"/>
+            <RadioButton
+                android:id="@+id/rbHome"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="16dp"
+                android:drawableTop="@drawable/ic_home"
+                android:background="@drawable/selector_icon_background"
+                android:button="@null" />
+        </RadioGroup>
 
-        <RadioButton
-            android:id="@+id/clothes"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:button="@null"
-            android:background="@drawable/ic_clothes"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/rg_icon4"/>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
 
-        <RadioButton
-            android:id="@+id/graphic"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:button="@null"
-            android:background="@drawable/ic_graphic"
-            android:layout_marginStart="33dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/rg_icon4"/>
+            <RadioButton
+                android:id="@+id/rbGameControl"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="16dp"
+                android:drawableTop="@drawable/ic_game_control"
+                android:background="@drawable/selector_icon_background"
+                android:button="@null" />
+
+            <RadioButton
+                android:id="@+id/rbClothes"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="16dp"
+                android:drawableTop="@drawable/ic_clothes"
+                android:background="@drawable/selector_icon_background"
+                android:button="@null" />
+
+            <RadioButton
+                android:id="@+id/rbGraphic"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="16dp"
+                android:drawableTop="@drawable/ic_graphic"
+                android:background="@drawable/selector_icon_background"
+                android:button="@null" />
+        </RadioGroup>
     </RadioGroup>
 
     <Button
-        android:id="@+id/btn_icon"
+        android:id="@+id/btnIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="Select"
+        android:text="Save Icon"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
