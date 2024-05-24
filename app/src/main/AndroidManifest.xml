@@ -26,10 +26,6 @@
             android:exported="false" />
         <activity
             android:name=".presentation.CategoryActivity"
-            android:name=".FinTrackActivity"
-            android:exported="false" />
-        <activity
-            android:name=".presentation.IconCategoryActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.ExpensesActivity"

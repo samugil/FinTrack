@@ -28,10 +28,15 @@ class FinTrackActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
     private lateinit var rvExpenses: RecyclerView
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navView: NavigationView
+    private lateinit var toolbar: androidx.appcompat.widget.Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fintrack_main)
+
+
+        toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
 
         ctnContent = findViewById(R.id.ctn_content) // Ajuste o id para o layout correto
         rvExpenses = findViewById(R.id.rv_expenses_list)
@@ -40,11 +45,13 @@ class FinTrackActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
         navView = findViewById(R.id.nav_view)
 
         val toggle = ActionBarDrawerToggle(
-            this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close
+            this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
         )
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         navView.setNavigationItemSelectedListener(this)
 
         // Inicializando o ViewModel usando ViewModelProvider
@@ -89,13 +96,8 @@ class FinTrackActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_home -> {
-                // Handle the home action
-            }
-            R.id.nav_categories -> {
-                // Handle the categories action
             }
             R.id.nav_settings -> {
-                // Handle the settings action
             }
         }
         drawerLayout.closeDrawer(GravityCompat.START)
