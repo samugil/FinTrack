@@ -47,3 +47,5 @@ data class ExpenseWithCategory(
     val expense: Expenses,
     val category: Category
 )
+
+

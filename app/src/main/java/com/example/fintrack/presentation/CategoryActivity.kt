@@ -10,6 +10,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.fintrack.data.AppDataBase
 import com.example.fintrack.data.Category
 import com.example.fintrack.databinding.ActivityCategoryBinding
+import com.example.fintrack.presentation.viewmodel.FinTrackViewModel
+import com.example.fintrack.presentation.viewmodel.FinTrackViewModelFactory
+import com.example.fintrack.repository.FinTrackRepository
 
 
 class CategoryActivity : AppCompatActivity() {
@@ -22,7 +25,7 @@ class CategoryActivity : AppCompatActivity() {
     private lateinit var colorActivityResultLauncher: ActivityResultLauncher<Intent>
     private lateinit var iconActivityResultLauncher: ActivityResultLauncher<Intent>
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCategoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
