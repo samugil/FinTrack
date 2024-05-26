@@ -5,19 +5,18 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.ColorCategoryActivity">
+    tools:context=".presentation.CategoryColorActivity">
 
     <TextView
         android:id="@+id/tv_color"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="Select the category color"
-        android:textSize="28sp"
-        android:textStyle="bold"
+        android:text="Selecionar cor da categoria"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/NomeTela"/>
 
     <RadioGroup
         android:id="@+id/rg_color1"
@@ -34,7 +33,7 @@
             android:layout_height="60dp"
             android:layout_marginStart="16dp"
             android:button="@null"
-            android:background="@drawable/oval_white"/>
+            android:background="@drawable/layer_white"/>
 
         <RadioButton
             android:id="@+id/rb_black"
@@ -42,7 +41,7 @@
             android:layout_height="60dp"
             android:layout_marginStart="25dp"
             android:button="@null"
-            android:background="@drawable/oval_black"/>
+            android:background="@drawable/layer_black"/>
 
         <RadioButton
             android:id="@+id/rb_red"
@@ -50,7 +49,7 @@
             android:layout_height="60dp"
             android:layout_marginStart="25dp"
             android:button="@null"
-            android:background="@drawable/oval_red"/>
+            android:background="@drawable/layer_red"/>
 
         <RadioButton
             android:id="@+id/rb_violet"
@@ -59,7 +58,7 @@
             android:layout_marginStart="25dp"
             android:layout_marginEnd="20dp"
             android:button="@null"
-            android:background="@drawable/oval_violet"/>
+            android:background="@drawable/layer_violet"/>
 
 
 
@@ -80,7 +79,7 @@
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:button="@null"
-        android:background="@drawable/oval_ocean_blue"/>
+        android:background="@drawable/layer_ocean_blue"/>
 
         <RadioButton
             android:id="@+id/rb_blue"
@@ -88,7 +87,7 @@
             android:layout_height="60dp"
             android:layout_marginStart="25dp"
             android:button="@null"
-            android:background="@drawable/oval_blue"/>
+            android:background="@drawable/layer_blue"/>
 
         <RadioButton
             android:id="@+id/rb_water_blue"
@@ -96,7 +95,7 @@
             android:layout_height="60dp"
             android:layout_marginStart="25dp"
             android:button="@null"
-            android:background="@drawable/oval_water_blue"/>
+            android:background="@drawable/layer_water_blue"/>
 
         <RadioButton
             android:id="@+id/rb_water_green"
@@ -105,7 +104,7 @@
             android:layout_marginStart="25dp"
             android:layout_marginEnd="20dp"
             android:button="@null"
-            android:background="@drawable/oval_water_green"/>
+            android:background="@drawable/layer_water_green"/>
 
 
             </RadioGroup>
@@ -125,7 +124,7 @@
                 android:layout_height="60dp"
                 android:layout_marginStart="16dp"
                 android:button="@null"
-                android:background="@drawable/oval_green"/>
+                android:background="@drawable/layer_green"/>
 
             <RadioButton
                 android:id="@+id/rb_light_yellow"
@@ -133,7 +132,7 @@
                 android:layout_height="60dp"
                 android:layout_marginStart="25dp"
                 android:button="@null"
-                android:background="@drawable/oval_light_yellow"/>
+                android:background="@drawable/layer_ligth_yellow"/>
 
             <RadioButton
                 android:id="@+id/rbWaterMediumYellow"
@@ -141,7 +140,7 @@
                 android:layout_height="60dp"
                 android:layout_marginStart="25dp"
                 android:button="@null"
-                android:background="@drawable/oval_mediun_yellow"/>
+                android:background="@drawable/layer_mediun_yellow"/>
 
             <RadioButton
                 android:id="@+id/rb_light_orange"
@@ -150,7 +149,7 @@
                 android:layout_marginStart="25dp"
                 android:layout_marginEnd="20dp"
                 android:button="@null"
-                android:background="@drawable/oval_light_orange"/>
+                android:background="@drawable/layer_ligth_orange"/>
 
                 </RadioGroup>
 
@@ -169,7 +168,7 @@
                     android:layout_height="60dp"
                     android:layout_marginStart="16dp"
                     android:button="@null"
-                    android:background="@drawable/oval_mediun_orange"/>
+                    android:background="@drawable/layer_mediun_orange"/>
 
                 <RadioButton
                     android:id="@+id/rb_brown_"
@@ -177,7 +176,7 @@
                     android:layout_height="60dp"
                     android:layout_marginStart="25dp"
                     android:button="@null"
-                    android:background="@drawable/oval_brown"/>
+                    android:background="@drawable/layer_brown"/>
 
                 <RadioButton
                     android:id="@+id/rb_grey"
@@ -185,7 +184,7 @@
                     android:layout_height="60dp"
                     android:layout_marginStart="25dp"
                     android:button="@null"
-                    android:background="@drawable/oval_grey"/>
+                    android:background="@drawable/layer_grey"/>
 
                 <RadioButton
                     android:id="@+id/rbMagenta"
@@ -194,7 +193,7 @@
                     android:layout_marginStart="25dp"
                     android:layout_marginEnd="20dp"
                     android:button="@null"
-                    android:background="@drawable/oval_margent"/>
+                    android:background="@drawable/layer_margent"/>
 
                 </RadioGroup>
 
@@ -203,11 +202,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="Select"
-        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/ButtonPrimary"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,39 +11,42 @@ import com.example.fintrack.R
 import com.example.fintrack.data.Category
 import com.example.fintrack.data.Expenses
 
-class FinTrackAdapter : RecyclerView.Adapter<FinTrackAdapter.ExpenseViewHolder>() {
+data class ExpenseWithCategory(
+    val color: String,
+    val icon: Int,
+    val price: Double,
+    val title: String
+)
 
-    private var expenses: List<ExpenseWithCategory> = listOf()
+class ExpenseWithCategoryAdapter : RecyclerView.Adapter<ExpenseWithCategoryAdapter.ExpenseViewHolder>() {
+
+    private var items: List<ExpenseWithCategory> = listOf()
 
     inner class ExpenseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val categoryColor: View = itemView.findViewById(R.id.categoryColor)
         val categoryIcon: ImageView = itemView.findViewById(R.id.categoryIcon)
-        val expenseName: TextView = itemView.findViewById(R.id.expenseName)
+        val categoryTitle: TextView = itemView.findViewById(R.id.categoryName)
         val expenseAmount: TextView = itemView.findViewById(R.id.expenseAmount)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExpenseViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_expenses, parent, false)
+        val inflater = LayoutInflater.from(parent.context)
+        val view = inflater.inflate(R.layout.item_expenses_with_categories, parent, false)
         return ExpenseViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ExpenseViewHolder, position: Int) {
-        val item = expenses[position]
-        holder.categoryColor.setBackgroundColor(Color.parseColor(item.category.color))
-        holder.categoryIcon.setImageResource(item.category.icon)
-        holder.expenseName.text = item.expense.title
-        holder.expenseAmount.text = String.format("-R$%.2f", item.expense.price)
+        val item = items[position]
+        holder.categoryColor.setBackgroundColor(Color.parseColor(item.color))
+        holder.categoryIcon.setImageResource(item.icon)
+        holder.categoryTitle.text = item.title
+        holder.expenseAmount.text = String.format("-R$%.2f", item.price)
     }
 
-    override fun getItemCount() = expenses.size
+    override fun getItemCount() = items.size
 
     fun setData(newData: List<ExpenseWithCategory>) {
-        expenses = newData
+        this.items = newData
         notifyDataSetChanged()
     }
 }
-
-data class ExpenseWithCategory(
-    val expense: Expenses,
-    val category: Category
-)

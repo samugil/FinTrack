@@ -1,19 +1,10 @@
 package com.example.fintrack
 
 import android.app.Application
-import androidx.room.Room
 import com.example.fintrack.data.AppDataBase
+import com.example.fintrack.repository.FinTrackRepository
 
-class FinTrackApplication: Application() {
-
-    private lateinit var dataBase: AppDataBase
-    override fun onCreate() {
-        super.onCreate()
-
-        dataBase = Room.databaseBuilder(
-            applicationContext,AppDataBase::class.java, "fintrack-database"
-        ).build()
-
-    }
-
+class FinTrackApplication : Application() {
+    val database by lazy { AppDataBase.getInstance(this) }
+    val repository by lazy { FinTrackRepository(database.appDao()) }
 }

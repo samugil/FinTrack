@@ -4,61 +4,64 @@ import androidx.lifecycle.LiveData
 import com.example.fintrack.data.AppDao
 import com.example.fintrack.data.Category
 import com.example.fintrack.data.Expenses
-import com.example.fintrack.presentation.viewmodel.ExpenseWithCategory
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 
-class FinTrackRepository(private val local: AppDao) {
+class FinTrackRepository(private val dao: AppDao) {
 
-    // LiveData para observação reativa
     fun getAllCategories(): LiveData<List<Category>> {
-        return local.getAllCategories()
+        return dao.getAllCategories()
     }
 
-    // coroutines para operações de banco de dados
-    suspend fun getAllExpensesWithCategories(): List<ExpenseWithCategory> {
-        return withContext(Dispatchers.IO) {
-            val expenses = local.getAllExpenses()
-            expenses.map { expense ->
-                val category = local.getCategoryById(expense.categoryId)
-                ExpenseWithCategory(expense, category)
+    fun getAllCategory(): List<Category> {
+        return dao.getAllCategory()
+    }
+
+    fun getAllExpenses(): List<Expenses> {
+        return dao.getAllExpenses()
+    }
+
+    fun getCategoryById(id: Int): LiveData<Category> {
+        return dao.getCategoryById(id)
+    }
+
+    fun getCategoryByName(name: String): LiveData<Category> {
+        return dao.getCategoryByName(name)
+    }
+
+
+    fun insertCategory(category: Category) {
+        dao.insertCategory(category)
+    }
+
+    fun updateCategory(category: Category) {
+        dao.updateCategory(category)
+    }
+
+    fun deleteCategory(category: Category) {
+        dao.deleteCategory(category)
+    }
+
+    fun insertExpenses(expense: Expenses) {
+        dao.insertExpenses(expense)
+    }
+
+    fun updateExpenses(expense: Expenses) {
+        dao.updateExpenses(expense)
+    }
+
+    fun deleteExpenses(expense: Expenses) {
+        dao.deleteExpenses(expense)
+    }
+
+    companion object {
+        @Volatile
+        private var INSTANCE: FinTrackRepository? = null
+
+        fun getInstance(dao: AppDao): FinTrackRepository {
+            return INSTANCE ?: synchronized(this) {
+                val instance = FinTrackRepository(dao)
+                INSTANCE = instance
+                instance
             }
-        }
-    }
-
-    suspend fun insertCategory(category: Category) {
-        withContext(Dispatchers.IO) {
-            local.insertCategory(category)
-        }
-    }
-
-    suspend fun updateCategory(category: Category) {
-        withContext(Dispatchers.IO) {
-            local.updateCategory(category)
-        }
-    }
-
-    suspend fun deleteCategory(category: Category) {
-        withContext(Dispatchers.IO) {
-            local.deleteCategory(category)
-        }
-    }
-
-    suspend fun insertExpenses(expense: Expenses) {
-        withContext(Dispatchers.IO) {
-            local.insertExpenses(expense)
-        }
-    }
-
-    suspend fun updateExpenses(expense: Expenses) {
-        withContext(Dispatchers.IO) {
-            local.updateExpenses(expense)
-        }
-    }
-
-    suspend fun deleteExpenses(expense: Expenses) {
-        withContext(Dispatchers.IO) {
-            local.deleteExpenses(expense)
         }
     }
 }
