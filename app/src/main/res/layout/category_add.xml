@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/categories"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.CategoryActivity">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        style="@style/ToolbarStyle"/>
 
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="Type the category title"
-        android:textSize="28sp"
-        android:textStyle="bold"
+        android:text="Categoria"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        style="@style/NomeTela"/>
 
     <TextView
         android:id="@+id/tv_sub_title"
@@ -27,11 +31,11 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="16dp"
-        android:text="Category"
-        android:textSize="18sp"
+        android:text="Nome da Categoria"
         app:layout_constraintEnd_toEndOf="@+id/tv_title"
         app:layout_constraintStart_toStartOf="@+id/tv_title"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+        style="@style/Title"/>
 
     <ImageView
         android:id="@+id/img_color_category"
@@ -55,7 +59,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginStart="91dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +67,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Enter the category title " />
+            android:layout_marginLeft="8dp"
+            android:hint="Digite um nome para sua Categoria"
+            style="@style/Description"/>
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -73,47 +78,57 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="Create"
-        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/ButtonPrimary"/>
 
     <EditText
-        android:id="@+id/edt_select_color_category"
+        android:id="@+id/edt_text_color"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="50dp"
-        android:hint="Select the color and icon of your category"
+        android:text="Selecione a Cor para sua Categoria"
         android:background="@android:color/transparent"
-        app:layout_constraintTop_toBottomOf="@+id/til_new_category" />
+        app:layout_constraintTop_toBottomOf="@+id/til_new_category"
+        style="@style/Title"/>
 
     <Button
         android:id="@+id/btn_color_select"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Select color"
-        android:textSize="20sp"
+        android:text="Selecionar Cor"
         android:layout_marginStart="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_select_color_category" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_text_color"
+        style="@style/Button"/>
+
+    <EditText
+        android:id="@+id/edt_text_icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="50dp"
+        android:text="Selecione o Icone para sua Categoria"
+        android:background="@android:color/transparent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_color_select"
+        style="@style/Title"/>
 
 
     <Button
         android:id="@+id/btn_icon_select"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginStart="67dp"
-        android:text="Select icon"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_color_select"
-        app:layout_constraintTop_toBottomOf="@+id/edt_select_color_category" />
+        android:text="Selecionar Icone"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_text_icon"
+        style="@style/Button"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

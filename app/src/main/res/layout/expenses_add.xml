@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/expenses"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    tools:context=".presentation.ExpensesActivity">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Crie sua Despesa"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/NomeTela"/>
+
+    <TextView
+        android:id="@+id/titleLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Despesa"
+        app:layout_constraintTop_toBottomOf="@id/textView2"
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/Title"
+        />
+
+    <EditText
+        android:id="@+id/edt_nome_despesa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/borda_texto"
+        android:hint="Digite o nome da sua despesa"
+        app:layout_constraintTop_toBottomOf="@id/titleLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/Description"/>
+
+    <TextView
+        android:id="@+id/categoryLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Categoria"
+        app:layout_constraintTop_toBottomOf="@id/edt_nome_despesa"
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/Title"/>
+
+    <Spinner
+        android:id="@+id/categorySpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/borda_texto"
+        app:layout_constraintTop_toBottomOf="@id/categoryLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/Description"/>
+
+    <TextView
+        android:id="@+id/princeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Valor"
+        app:layout_constraintTop_toBottomOf="@id/categorySpinner"
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/Title"
+        />
+
+    <EditText
+        android:id="@+id/edt_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/borda_texto"
+        android:hint="Digite o preço da sua despesa"
+        app:layout_constraintTop_toBottomOf="@id/princeLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/Description"/>
+
+    <Button
+        android:id="@+id/createButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/ButtonPrimary"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
