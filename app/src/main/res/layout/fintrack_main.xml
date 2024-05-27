@@ -22,23 +22,23 @@
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:layout_constraintStart_toStartOf="parent"
-        android:padding="16dp">
+        android:padding="16dp"
+        >
 
         <TextView
             android:id="@+id/tv_total_spent_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Total Spent:"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            style="@style/TotalSpent" />
 
         <TextView
             android:id="@+id/tv_total_spent_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="R$ 0,00"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            style="@style/TotalSpentValue"
+            />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

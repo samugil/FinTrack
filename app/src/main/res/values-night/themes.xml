@@ -26,6 +26,18 @@
         <item name="android:textSize">24sp</item>
     </style>
 
+    <style name="TotalSpent" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="TotalSpentValue" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
     <style name="SplashScreen" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/poppins_bold</item>
         <item name="android:textColor">@color/white</item>
@@ -46,6 +58,7 @@
         <item name="android:textSize">14sp</item>
         <item name="android:layout_marginTop">3dp</item>
         <item name="android:layout_marginStart">10dp</item>
+        <item name="paddingStart">5dp</item>
     </style>
 
     <style name="RadioButton" parent="Widget.AppCompat.TextView">
