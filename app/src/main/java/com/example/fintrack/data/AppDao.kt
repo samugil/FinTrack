@@ -8,37 +8,31 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 
-
 @Dao
 interface AppDao {
 
-    // Operações relacionadas à tabela de categorias
-
-    @Query("SELECT * FROM Expenses WHERE categoryId = :categoryId ORDER BY id DESC")
-    fun getExpensesByCategoryId(categoryId: Int): List<Expenses>
-    @Query("SELECT * FROM Category ORDER BY id DESC")
+    @Query("SELECT * FROM Category")
     fun getAllCategories(): LiveData<List<Category>>
 
+    @Query("SELECT * FROM Expenses")
+    fun getAllExpenses(): LiveData<List<Expenses>>
+
     @Query("SELECT * FROM Category WHERE id = :id")
-    fun getCategoryById(id: Int): Category
+    fun getCategoryById(id: Int): LiveData<Category>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertCategory(category: Category)
 
-    @Update(onConflict = OnConflictStrategy.REPLACE)
+    @Update
     fun updateCategory(category: Category)
 
     @Delete
     fun deleteCategory(category: Category)
 
-    // Operações relacionadas à tabela de despesas
-    @Query("SELECT * FROM Expenses ORDER BY id DESC")
-    fun getAllExpenses(): List<Expenses>
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertExpenses(expense: Expenses)
 
-    @Update(onConflict = OnConflictStrategy.REPLACE)
+    @Update
     fun updateExpenses(expense: Expenses)
 
     @Delete

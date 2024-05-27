@@ -4,10 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".presentation.FinTrackActivity">
 
+
+    <!-- Incluindo a Toolbar -->
     <include layout="@layout/toolbar" />
+
 
     <LinearLayout
         android:id="@+id/ll_total_spent"
@@ -40,24 +42,13 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_expenses_list"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ll_total_spent"
-        tools:listitem="@layout/item_expenses" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        tools:listitem="@layout/item_expenses_with_categories" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btn_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/addbutton"
-        />
 
     <LinearLayout
         android:id="@+id/ctn_content"
@@ -75,13 +66,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="24dp"
             android:gravity="center"
-            android:text="Nenhuma depesas para exibir, adcione uma despesa" />
+            android:text="Adicione uma Despesa"
+            style="@style/NomeTela"/>
 
 
         <ImageView
@@ -89,10 +82,32 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
-            android:src="@drawable/imgvazio"
-            />
+            android:src="@drawable/imgvazio" />
 
     </LinearLayout>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:srcCompat="@drawable/addbutton"
+        style="@style/Button"/>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_categories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_add"
+        app:srcCompat="@drawable/btn_add_categories"
+        style="@style/Button"/>
+
 
 
 

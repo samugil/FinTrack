@@ -2,4 +2,23 @@
     <string name="app_name">FinTrack</string>
 
     <string name="category_icon">Category Icon</string>
+    <string name="navigation_drawer_open">Open Navigation Drawer</string>
+    <string name="navigation_drawer_close">Close Navigation Drawer</string>
+
+    <string name="toolbarName">FinTrack</string>
+    <string name="textName">Nome</string>
+    <string name="hintName">Ex: João Silva</string>
+    <string name="textWarning">A senha precisa conter no mínimo 8 digitos, letras maiúsculas, letras minúsculas e números</string>
+    <string name="textButton">Salvar</string>
+    <string name="close">Fechar</string>
+
+
+    // Fragment Settings
+    <string name="info">Sobre o aplicativo</string>
+
+    // Feature Settings About
+    <string name="vesion">Versão 1.0</string>
+    <string name="Creator">Samuel Gil, Carla Louise, Alexandre Terço</string>
+    <string name="More">Aplicativo criado em ambito de estudo para aperfeiçoamento de nossas habilidades, dentro da comunidade DevSpace</string>
+
 </resources>
