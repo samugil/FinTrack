@@ -16,4 +16,20 @@
     <color name="medium_orange">#FF5726</color>
     <color name="brown">#7A5548</color>
     <color name="grey">#607D8A</color>
+    <color name="margent">#E91E63</color>
+
+    <!-- Cores para os temas -->
+
+    <color name="black_42">#6B000000</color>
+    <color name="safety_yellow">#ECA20C</color>
+    <color name="orange">#E46A15</color>
+    <color name="yellow_gold">#DFC76C</color>
+    <color name="blue_background">#EFF8FF</color>
+    <color name="outline">#C7C7CC</color>
+    <color name="blue_01">#2B4099</color>
+    <color name="blue_02">#3BB6FB</color>
+    <color name="blue_03">#262473</color>
+    <color name="blue_04">#230753</color>
+    <color name="red_01">#810404</color>
+
 </resources>
