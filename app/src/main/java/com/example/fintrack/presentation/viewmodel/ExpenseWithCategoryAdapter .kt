@@ -11,9 +11,14 @@ import com.example.fintrack.R
 import com.example.fintrack.data.Category
 import com.example.fintrack.data.Expenses
 
-class FinTrackAdapter : RecyclerView.Adapter<FinTrackAdapter.ExpenseViewHolder>() {
+data class ExpenseWithCategory(
+    val expense: Expenses,
+    val category: Category
+)
 
-    private var expenses: List<ExpenseWithCategory> = listOf()
+class ExpenseWithCategoryAdapter : RecyclerView.Adapter<ExpenseWithCategoryAdapter.ExpenseViewHolder>() {
+
+    private var items: List<ExpenseWithCategory> = listOf()
 
     inner class ExpenseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val categoryColor: View = itemView.findViewById(R.id.categoryColor)
@@ -23,27 +28,28 @@ class FinTrackAdapter : RecyclerView.Adapter<FinTrackAdapter.ExpenseViewHolder>(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExpenseViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_expenses, parent, false)
+        val inflater = LayoutInflater.from(parent.context)
+        val view = inflater.inflate(R.layout.item_expenses_with_categories, parent, false)
         return ExpenseViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ExpenseViewHolder, position: Int) {
-        val item = expenses[position]
+        val item = items[position]
         holder.categoryColor.setBackgroundColor(Color.parseColor(item.category.color))
         holder.categoryIcon.setImageResource(item.category.icon)
         holder.expenseName.text = item.expense.title
         holder.expenseAmount.text = String.format("-R$%.2f", item.expense.price)
     }
 
-    override fun getItemCount() = expenses.size
+    override fun getItemCount() = items.size
 
     fun setData(newData: List<ExpenseWithCategory>) {
-        expenses = newData
+        this.items = newData
+        notifyDataSetChanged()
+    }
+
+    fun submitList(list: List<ExpenseWithCategory>) {
+        items = list
         notifyDataSetChanged()
     }
 }
-
-data class ExpenseWithCategory(
-    val expense: Expenses,
-    val category: Category
-)
