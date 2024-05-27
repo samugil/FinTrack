@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import androidx.appcompat.app.AlertDialog
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
@@ -36,6 +37,8 @@ class FinTrackActivity : AppCompatActivity() {
     private lateinit var dialog: AlertDialog
 
 
+    private lateinit var tvTotalSpentLabel: TextView
+    private lateinit var tvTotalSpentValue: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fintrack_main)
@@ -43,6 +46,8 @@ class FinTrackActivity : AppCompatActivity() {
 
         ctnContent = findViewById(R.id.ctn_content)
         rvExpenses = findViewById(R.id.rv_expenses_list)
+        tvTotalSpentLabel = findViewById(R.id.tv_total_spent_label)
+        tvTotalSpentValue = findViewById(R.id.tv_total_spent_label)
         val btnAdd: FloatingActionButton = findViewById(R.id.btn_add)
         val btnCategory: FloatingActionButton = findViewById(R.id.btn_categories)
 
@@ -133,5 +138,10 @@ class FinTrackActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
+    }
+
+    private fun updateTotalSpent(expensesWithCategories: List<ExpenseWithCategory>) {
+        val totalSpent = expensesWithCategories.sumOf { it.expense.price }
+        tvTotalSpentValue.text = "Total Spent: R$%.2f".format(totalSpent)
     }
 }
