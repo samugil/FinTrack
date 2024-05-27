@@ -26,7 +26,7 @@ class CategoryListsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.category_list)
+        setContentView(R.layout.activity_category_lists)
 
         ctnContent = findViewById(R.id.ctn_content_category)
         rvCategoryList = findViewById(R.id.rv_category_list)
@@ -85,7 +85,7 @@ class CategoryListsActivity : AppCompatActivity() {
     companion object {
         // Função estática para iniciar esta atividade
         fun start(context: Context, category: Category?): Intent {
-            val intent = Intent(context, CategoryListActivity::class.java)
+            val intent = Intent(context, CategoryListsActivity::class.java)
             // intent.putExtra("category", category)
             return intent
         }

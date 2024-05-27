@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fintrack.R
 import com.example.fintrack.data.AppDataBase
 import com.example.fintrack.data.Category
+import com.example.fintrack.presentation.viewmodel.ExpenseWithCategory
 import com.example.fintrack.presentation.viewmodel.ExpenseWithCategoryAdapter
 import com.example.fintrack.presentation.viewmodel.ExpenseWithCategoryViewModel
 import com.example.fintrack.presentation.viewmodel.ExpenseWithCategoryViewModelFactory
@@ -80,7 +81,7 @@ class FinTrackActivity : AppCompatActivity() {
     }
 
     private fun openCategoryAdd(category: Category? = null) {
-        val intent = CategoryListActivity.start(this, category)
+        val intent = CategoryListsActivity.start(this, category)
         startActivity(intent)
     }
 

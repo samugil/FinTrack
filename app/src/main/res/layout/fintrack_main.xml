@@ -8,7 +8,8 @@
 
 
     <!-- Incluindo a Toolbar -->
-    <include layout="@layout/toolbar" />
+    <include layout="@layout/toolbar"
+        android:id="@+id/toolbar"/>
 
 
     <LinearLayout
@@ -42,13 +43,13 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_expenses_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintTop_toBottomOf="@id/ll_total_spent"
         tools:listitem="@layout/item_expenses_with_categories" />
-
 
     <LinearLayout
         android:id="@+id/ctn_content"
