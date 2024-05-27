@@ -3,7 +3,6 @@ package com.example.fintrack.presentation
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -21,12 +20,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fintrack.R
 import com.example.fintrack.data.AppDataBase
 import com.example.fintrack.data.Category
+import com.example.fintrack.presentation.viewmodel.ExpenseWithCategory
 import com.example.fintrack.presentation.viewmodel.ExpenseWithCategoryAdapter
 import com.example.fintrack.presentation.viewmodel.ExpenseWithCategoryViewModel
 import com.example.fintrack.presentation.viewmodel.ExpenseWithCategoryViewModelFactory
 import com.example.fintrack.repository.FinTrackRepository
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class FinTrackActivity : AppCompatActivity() {
 
@@ -46,8 +48,10 @@ class FinTrackActivity : AppCompatActivity() {
 
         ctnContent = findViewById(R.id.ctn_content)
         rvExpenses = findViewById(R.id.rv_expenses_list)
+
         tvTotalSpentLabel = findViewById(R.id.tv_total_spent_label)
-        tvTotalSpentValue = findViewById(R.id.tv_total_spent_label)
+        tvTotalSpentValue = findViewById(R.id.tv_total_spent_value)
+
         val btnAdd: FloatingActionButton = findViewById(R.id.btn_add)
         val btnCategory: FloatingActionButton = findViewById(R.id.btn_categories)
 
@@ -65,6 +69,7 @@ class FinTrackActivity : AppCompatActivity() {
         viewModel.expensesWithCategories.observe(this, Observer { listExpenses ->
             expensesAdapter.setData(listExpenses)
             ctnContent.visibility = if (listExpenses.isEmpty()) View.VISIBLE else View.GONE
+            updateTotalSpent(listExpenses)
         })
 
         btnAdd.setOnClickListener {
@@ -76,6 +81,11 @@ class FinTrackActivity : AppCompatActivity() {
             showMessage(it, "Here's a Snackbar")
             openCategoryAdd()
         }
+    }
+
+    private fun updateTotalSpent(expensesWithCategories: List<ExpenseWithCategory>) {
+        val totalSpent = expensesWithCategories.sumOf { it.price }
+        tvTotalSpentValue.text = "-R$%.2f".format(totalSpent)
     }
 
     private fun showMessage(view: View, message: String) {
@@ -140,8 +150,5 @@ class FinTrackActivity : AppCompatActivity() {
 
     }
 
-    private fun updateTotalSpent(expensesWithCategories: List<ExpenseWithCategory>) {
-        val totalSpent = expensesWithCategories.sumOf { it.expense.price }
-        tvTotalSpentValue.text = "Total Spent: R$%.2f".format(totalSpent)
-    }
+
 }

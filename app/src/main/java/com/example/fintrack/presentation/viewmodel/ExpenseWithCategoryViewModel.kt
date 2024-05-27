@@ -25,9 +25,9 @@ class ExpenseWithCategoryViewModel(private val repository: FinTrackRepository) :
     fun insertExpense(expense: Expenses) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.insertExpenses(expense)
-            fetchExpensesWithCategories() // Refresh depois da inclusão
             _insertComplete.postValue(true) // Indicar que a inserção foi concluída
         }
+        fetchExpensesWithCategories() // Refresh depois da inclusão
     }
 
     fun updateExpense(expense: Expenses) {
@@ -68,8 +68,9 @@ class ExpenseWithCategoryViewModel(private val repository: FinTrackRepository) :
                         )
                     )
                 }
+                _expensesWithCategories.postValue(expenseWithCategoryList)
             }
-            _expensesWithCategories.postValue(expenseWithCategoryList)
+
         }
     }
 }
