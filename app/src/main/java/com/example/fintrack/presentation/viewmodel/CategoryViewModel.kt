@@ -24,7 +24,7 @@ class CategoryViewModel(private val repository: FinTrackRepository) : ViewModel(
         viewModelScope.launch(Dispatchers.IO) {
             repository.insertCategory(category)
             // Após a inserção, navega de volta para a lista de categorias
-            onCategoryListNavigated()
+                onCategoryListNavigated()
         }
     }
 
@@ -42,6 +42,8 @@ class CategoryViewModel(private val repository: FinTrackRepository) : ViewModel(
 
     // Método para indicar que a navegação para a lista de categorias foi concluída
     fun onCategoryListNavigated() {
-        _navigateToCategoryList.value = true
+        viewModelScope.launch(Dispatchers.Main) {
+            _navigateToCategoryList.value = true
+        }
     }
 }

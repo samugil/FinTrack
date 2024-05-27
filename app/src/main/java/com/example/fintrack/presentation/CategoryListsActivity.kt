@@ -1,3 +1,7 @@
+package com.example.fintrack.presentation
+
+import CategoryViewModel
+import CategoryViewModelFactory
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -10,12 +14,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fintrack.R
 import com.example.fintrack.data.AppDataBase
 import com.example.fintrack.data.Category
-import com.example.fintrack.presentation.CategoryActivity
-import com.example.fintrack.presentation.FinTrackActivity
 import com.example.fintrack.presentation.viewmodel.CategoryAdapter
 import com.example.fintrack.repository.FinTrackRepository
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+
 
 class CategoryListsActivity : AppCompatActivity() {
 
@@ -26,7 +29,7 @@ class CategoryListsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.category_list)
+        setContentView(R.layout.activity_category_lists)
 
         ctnContent = findViewById(R.id.ctn_content_category)
         rvCategoryList = findViewById(R.id.rv_category_list)
@@ -38,11 +41,17 @@ class CategoryListsActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this, factory).get(CategoryViewModel::class.java)
 
         categoryAdapter = CategoryAdapter()
-        rvCategoryList.layoutManager = LinearLayoutManager(this)
+        rvCategoryList.layoutManager = LinearLayoutManager(applicationContext)
         rvCategoryList.adapter = categoryAdapter
 
+        viewModel.categories.observe(this) { itens ->
+            categoryAdapter.setData(itens)
+            ctnContent.visibility = if (itens.isEmpty()) View.VISIBLE else View.GONE
+        }
+
+
         // Observa as categorias e atualiza o RecyclerView quando houver mudanças
-        viewModel.categories.observe(this) { categories ->
+        /*viewModel.categories.observe(this) { categories ->
             if (categories.isNullOrEmpty()) {
                 findViewById<LinearLayout>(R.id.ctn_content_category).visibility = View.VISIBLE
                 rvCategoryList.visibility = View.GONE
@@ -52,6 +61,8 @@ class CategoryListsActivity : AppCompatActivity() {
                 categoryAdapter.setData(categories)
             }
         }
+
+         */
 
         btnAdd.setOnClickListener {
             showMessage(it, "Adicione Categorias")
@@ -85,8 +96,8 @@ class CategoryListsActivity : AppCompatActivity() {
     companion object {
         // Função estática para iniciar esta atividade
         fun start(context: Context, category: Category?): Intent {
-            val intent = Intent(context, CategoryListActivity::class.java)
-            // intent.putExtra("category", category)
+            val intent = Intent(context, CategoryListsActivity::class.java)
+            intent.putExtra("category", category)
             return intent
         }
     }

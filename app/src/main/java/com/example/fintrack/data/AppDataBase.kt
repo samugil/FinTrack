@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 // Definindo as entidades e a versão do banco de dados
-@Database(entities = [Category::class, Expenses::class], version = 4)
+@Database(entities = [Category::class, Expenses::class], version = 6)
 abstract class AppDataBase : RoomDatabase() {
 
     // Método abstrato para obter a DAO

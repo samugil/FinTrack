@@ -12,8 +12,10 @@ import com.example.fintrack.data.Category
 import com.example.fintrack.data.Expenses
 
 data class ExpenseWithCategory(
-    val expense: Expenses,
-    val category: Category
+    val color: String,
+    val icon: Int,
+    val price: Double,
+    val title: String
 )
 
 class ExpenseWithCategoryAdapter : RecyclerView.Adapter<ExpenseWithCategoryAdapter.ExpenseViewHolder>() {
@@ -23,7 +25,7 @@ class ExpenseWithCategoryAdapter : RecyclerView.Adapter<ExpenseWithCategoryAdapt
     inner class ExpenseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val categoryColor: View = itemView.findViewById(R.id.categoryColor)
         val categoryIcon: ImageView = itemView.findViewById(R.id.categoryIcon)
-        val expenseName: TextView = itemView.findViewById(R.id.expenseName)
+        val categoryTitle: TextView = itemView.findViewById(R.id.categoryName)
         val expenseAmount: TextView = itemView.findViewById(R.id.expenseAmount)
     }
 
@@ -35,21 +37,16 @@ class ExpenseWithCategoryAdapter : RecyclerView.Adapter<ExpenseWithCategoryAdapt
 
     override fun onBindViewHolder(holder: ExpenseViewHolder, position: Int) {
         val item = items[position]
-        holder.categoryColor.setBackgroundColor(Color.parseColor(item.category.color))
-        holder.categoryIcon.setImageResource(item.category.icon)
-        holder.expenseName.text = item.expense.title
-        holder.expenseAmount.text = String.format("-R$%.2f", item.expense.price)
+        holder.categoryColor.setBackgroundColor(Color.parseColor(item.color))
+        holder.categoryIcon.setImageResource(item.icon)
+        holder.categoryTitle.text = item.title
+        holder.expenseAmount.text = String.format("-R$%.2f", item.price)
     }
 
     override fun getItemCount() = items.size
 
     fun setData(newData: List<ExpenseWithCategory>) {
         this.items = newData
-        notifyDataSetChanged()
-    }
-
-    fun submitList(list: List<ExpenseWithCategory>) {
-        items = list
         notifyDataSetChanged()
     }
 }

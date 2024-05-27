@@ -10,7 +10,9 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import androidx.appcompat.app.AlertDialog
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,12 +20,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fintrack.R
 import com.example.fintrack.data.AppDataBase
 import com.example.fintrack.data.Category
+import com.example.fintrack.presentation.viewmodel.ExpenseWithCategory
 import com.example.fintrack.presentation.viewmodel.ExpenseWithCategoryAdapter
 import com.example.fintrack.presentation.viewmodel.ExpenseWithCategoryViewModel
 import com.example.fintrack.presentation.viewmodel.ExpenseWithCategoryViewModelFactory
 import com.example.fintrack.repository.FinTrackRepository
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class FinTrackActivity : AppCompatActivity() {
 
@@ -34,6 +39,8 @@ class FinTrackActivity : AppCompatActivity() {
     private lateinit var dialog: AlertDialog
 
 
+    private lateinit var tvTotalSpentLabel: TextView
+    private lateinit var tvTotalSpentValue: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fintrack_main)
@@ -41,10 +48,16 @@ class FinTrackActivity : AppCompatActivity() {
 
         ctnContent = findViewById(R.id.ctn_content)
         rvExpenses = findViewById(R.id.rv_expenses_list)
+
+        tvTotalSpentLabel = findViewById(R.id.tv_total_spent_label)
+        tvTotalSpentValue = findViewById(R.id.tv_total_spent_value)
+
         val btnAdd: FloatingActionButton = findViewById(R.id.btn_add)
         val btnCategory: FloatingActionButton = findViewById(R.id.btn_categories)
 
         val repository = FinTrackRepository(AppDataBase.getInstance(this).appDao())
+        val categories: LiveData<List<Category>> = repository.getAllCategories()
+
         val factory = ExpenseWithCategoryViewModelFactory(repository)
         viewModel = ViewModelProvider(this, factory).get(ExpenseWithCategoryViewModel::class.java)
 
@@ -52,9 +65,11 @@ class FinTrackActivity : AppCompatActivity() {
         rvExpenses.layoutManager = LinearLayoutManager(this)
         rvExpenses.adapter = expensesAdapter
 
+
         viewModel.expensesWithCategories.observe(this, Observer { listExpenses ->
-            expensesAdapter.submitList(listExpenses)
+            expensesAdapter.setData(listExpenses)
             ctnContent.visibility = if (listExpenses.isEmpty()) View.VISIBLE else View.GONE
+            updateTotalSpent(listExpenses)
         })
 
         btnAdd.setOnClickListener {
@@ -68,6 +83,11 @@ class FinTrackActivity : AppCompatActivity() {
         }
     }
 
+    private fun updateTotalSpent(expensesWithCategories: List<ExpenseWithCategory>) {
+        val totalSpent = expensesWithCategories.sumOf { it.price }
+        tvTotalSpentValue.text = "-R$%.2f".format(totalSpent)
+    }
+
     private fun showMessage(view: View, message: String) {
         Snackbar.make(view, message, Snackbar.LENGTH_LONG)
             .setAction("Action", null)
@@ -75,7 +95,7 @@ class FinTrackActivity : AppCompatActivity() {
     }
 
     private fun openCategoryAdd(category: Category? = null) {
-        val intent = CategoryListActivity.start(this, category)
+        val intent = CategoryListsActivity.start(this, category)
         startActivity(intent)
     }
 
@@ -124,4 +144,11 @@ class FinTrackActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
     }
+
+    override fun onResume() {
+        super.onResume()
+
+    }
+
+
 }

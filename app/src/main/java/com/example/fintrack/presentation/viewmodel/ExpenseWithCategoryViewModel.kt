@@ -4,12 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.fintrack.data.Category
 import com.example.fintrack.data.Expenses
 import com.example.fintrack.repository.FinTrackRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ExpenseWithCategoryViewModel(private val repository: FinTrackRepository) : ViewModel() {
+
 
     private val _expensesWithCategories = MutableLiveData<List<ExpenseWithCategory>>()
     val expensesWithCategories: LiveData<List<ExpenseWithCategory>> get() = _expensesWithCategories
@@ -24,8 +26,8 @@ class ExpenseWithCategoryViewModel(private val repository: FinTrackRepository) :
         viewModelScope.launch(Dispatchers.IO) {
             repository.insertExpenses(expense)
             _insertComplete.postValue(true) // Indicar que a inserção foi concluída
-            fetchExpensesWithCategories() // Refresh the data after insertion
         }
+        fetchExpensesWithCategories() // Refresh depois da inclusão
     }
 
     fun updateExpense(expense: Expenses) {
@@ -44,17 +46,31 @@ class ExpenseWithCategoryViewModel(private val repository: FinTrackRepository) :
 
     private fun fetchExpensesWithCategories() {
         viewModelScope.launch(Dispatchers.IO) {
-            val expenses = repository.getAllExpenses().value ?: emptyList()
-            val categories = repository.getAllCategories().value ?: emptyList()
-            val expenseWithCategoryList = expenses.mapNotNull { expense ->
-                val category = categories.find { it.id == expense.categoryId }
-                if (category != null) {
-                    ExpenseWithCategory(expense, category)
-                } else {
-                    null
+            val expensesAll = repository.getAllExpenses()
+            val categories = repository.getAllCategory()
+
+
+            val expenseWithCategoryList: MutableList<ExpenseWithCategory> = mutableListOf()
+            if (expensesAll.isNotEmpty() && categories.isNotEmpty()) {
+                for (categoria in categories) {
+                    var categoryValue: Double = 0.0
+                    expensesAll.forEach {
+                        if (it.categoryId == categoria.id) {
+                            categoryValue += it.price
+                        }
+                    }
+                    expenseWithCategoryList.add(
+                        ExpenseWithCategory(
+                            categoria.color,
+                            categoria.icon,
+                            categoryValue,
+                            categoria.title
+                        )
+                    )
                 }
+                _expensesWithCategories.postValue(expenseWithCategoryList)
             }
-            _expensesWithCategories.postValue(expenseWithCategoryList)
+
         }
     }
 }

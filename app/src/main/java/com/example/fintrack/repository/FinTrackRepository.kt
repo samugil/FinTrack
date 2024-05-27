@@ -11,13 +11,22 @@ class FinTrackRepository(private val dao: AppDao) {
         return dao.getAllCategories()
     }
 
-    fun getAllExpenses(): LiveData<List<Expenses>> {
+    fun getAllCategory(): List<Category> {
+        return dao.getAllCategory()
+    }
+
+    fun getAllExpenses(): List<Expenses> {
         return dao.getAllExpenses()
     }
 
     fun getCategoryById(id: Int): LiveData<Category> {
         return dao.getCategoryById(id)
     }
+
+    fun getCategoryByName(name: String): LiveData<Category> {
+        return dao.getCategoryByName(name)
+    }
+
 
     fun insertCategory(category: Category) {
         dao.insertCategory(category)
