@@ -10,9 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.fintrack.data.AppDataBase
 import com.example.fintrack.data.Category
 import com.example.fintrack.databinding.ActivityCategoryBinding
-import com.example.fintrack.presentation.viewmodel.FinTrackViewModel
-import com.example.fintrack.presentation.viewmodel.FinTrackViewModelFactory
-import com.example.fintrack.repository.FinTrackRepository
 
 
 class CategoryActivity : AppCompatActivity() {

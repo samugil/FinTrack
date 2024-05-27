@@ -8,10 +8,14 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 
+
 @Dao
 interface AppDao {
 
     // Operações relacionadas à tabela de categorias
+
+    @Query("SELECT * FROM Expenses WHERE categoryId = :categoryId ORDER BY id DESC")
+    fun getExpensesByCategoryId(categoryId: Int): List<Expenses>
     @Query("SELECT * FROM Category ORDER BY id DESC")
     fun getAllCategories(): LiveData<List<Category>>
 

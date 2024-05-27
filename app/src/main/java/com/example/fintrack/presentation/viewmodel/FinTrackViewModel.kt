@@ -14,14 +14,15 @@ class FinTrackViewModel(private val repository: FinTrackRepository) : ViewModel(
 
     val categories: LiveData<List<Category>> = repository.getAllCategories()
 
-    fun fetchExpensesWithCategories(onResult: (List<ExpenseWithCategory>) -> Unit) {
+    fun fetchExpensesWithCategories(categoryId: Int, onResult: (List<ExpenseWithCategory>) -> Unit) {
         viewModelScope.launch {
             val result = withContext(Dispatchers.IO) {
-                repository.getAllExpensesWithCategories()
+                repository.getExpensesWithCategory(categoryId)
             }
             onResult(result)
         }
     }
+
 
     fun insertCategory(category: Category) {
         viewModelScope.launch(Dispatchers.IO) {

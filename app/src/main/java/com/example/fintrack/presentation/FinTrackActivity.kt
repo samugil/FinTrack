@@ -32,7 +32,7 @@ class FinTrackActivity : AppCompatActivity() {
         ctnContent = findViewById(R.id.ctn_content) // Ajuste o id para o layout correto
         rvExpenses = findViewById(R.id.rv_expenses_list)
         tvTotalSpentLabel = findViewById(R.id.tv_total_spent_label)
-        tvTotalSpentValue = findViewById(R.id.tv_total_spent_label)
+        tvTotalSpentValue = findViewById(R.id.tv_total_spent_value)
         val btnAdd: FloatingActionButton = findViewById(R.id.btn_add)
 
         // Inicializando o ViewModel usando ViewModelProvider
@@ -49,7 +49,9 @@ class FinTrackActivity : AppCompatActivity() {
 
         })
 
-        viewModel.fetchExpensesWithCategories { expensesWithCategories ->
+        val selectedCategoryId: Int = 1
+
+        viewModel.fetchExpensesWithCategories(selectedCategoryId) { expensesWithCategories ->
             if (expensesWithCategories.isNullOrEmpty()) {
                 // Mostra empty state
                 ctnContent.visibility = LinearLayout.VISIBLE

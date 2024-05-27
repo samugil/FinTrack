@@ -5,7 +5,6 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.fintrack.R
 import com.example.fintrack.databinding.ActivityColorCategoryBinding
 
 class ColorCategoryActivity : AppCompatActivity() {

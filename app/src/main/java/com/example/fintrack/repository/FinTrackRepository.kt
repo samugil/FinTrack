@@ -16,15 +16,16 @@ class FinTrackRepository(private val local: AppDao) {
     }
 
     // coroutines para operações de banco de dados
-    suspend fun getAllExpensesWithCategories(): List<ExpenseWithCategory> {
+    suspend fun getExpensesWithCategory(categoryId: Int): List<ExpenseWithCategory> {
         return withContext(Dispatchers.IO) {
-            val expenses = local.getAllExpenses()
+            val expenses = local.getExpensesByCategoryId(categoryId)
             expenses.map { expense ->
                 val category = local.getCategoryById(expense.categoryId)
                 ExpenseWithCategory(expense, category)
             }
         }
     }
+
 
     suspend fun insertCategory(category: Category) {
         withContext(Dispatchers.IO) {
