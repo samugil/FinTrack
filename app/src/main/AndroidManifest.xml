@@ -13,9 +13,9 @@
         android:theme="@style/Base.Theme.FinTrack"
         tools:targetApi="31">
 
-        <activity android:name=".presentation.CategoryListsActivity"
-            android:exported = "false"/>
-
+        <activity
+            android:name=".presentation.CategoryListsActivity"
+            android:exported="false" />
         <activity
             android:name=".presentation.FinTrackActivity"
             android:exported="false" />
