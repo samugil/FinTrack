@@ -27,15 +27,25 @@
         style="@style/Title"
         />
 
-    <EditText
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/edt_nome_despesa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/borda_texto"
-        android:hint="Digite o nome da sua despesa"
-        app:layout_constraintTop_toBottomOf="@id/titleLabel"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        style="@style/Description"/>
+        app:layout_constraintTop_toBottomOf="@+id/titleLabel">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:hint="Digite a descrição da Despesa"
+            style="@style/Description"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
 
     <TextView
         android:id="@+id/categoryLabel"
@@ -53,7 +63,6 @@
         android:layout_height="wrap_content"
         android:spinnerMode="dropdown"
         android:layout_marginTop="4dp"
-        android:background="@drawable/borda_texto"
         app:layout_constraintTop_toBottomOf="@id/categoryLabel"
         app:layout_constraintStart_toStartOf="parent"
         style="@style/Description"/>
@@ -69,15 +78,23 @@
         style="@style/Title"
         />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/edt_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/borda_texto"
-        android:hint="Digite o preço da sua despesa"
-        app:layout_constraintTop_toBottomOf="@id/princeLabel"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        style="@style/Description"/>
+        app:layout_constraintTop_toBottomOf="@+id/princeLabel">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:hint="Digite o preço da sua despesa"
+            style="@style/Description"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <Button
         android:id="@+id/createButton"

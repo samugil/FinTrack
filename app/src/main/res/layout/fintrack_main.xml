@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".presentation.FinTrackActivity">
 
 
@@ -21,23 +22,23 @@
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:layout_constraintStart_toStartOf="parent"
-        android:padding="16dp">
+        android:padding="16dp"
+        >
 
         <TextView
             android:id="@+id/tv_total_spent_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Total Spent:"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            style="@style/TotalSpent" />
 
         <TextView
             android:id="@+id/tv_total_spent_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="R$ 0,00"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            style="@style/TotalSpentValue"
+            />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -50,6 +51,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ll_total_spent"
         tools:listitem="@layout/item_expenses_with_categories" />
+
 
     <LinearLayout
         android:id="@+id/ctn_content"
@@ -75,6 +77,7 @@
             android:layout_margin="24dp"
             android:gravity="center"
             android:text="Adicione uma Despesa"
+            app:layout_constraintTop_toBottomOf="@id/ll_total_spent"
             style="@style/NomeTela"/>
 
 
@@ -83,6 +86,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
+            app:layout_constraintTop_toBottomOf="@id/ll_total_spent"
             android:src="@drawable/imgvazio" />
 
     </LinearLayout>

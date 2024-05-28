@@ -23,7 +23,7 @@
         android:src="@drawable/ic_placeholder" />
 
     <TextView
-        android:id="@+id/categoryname"
+        android:id="@+id/categoryName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"

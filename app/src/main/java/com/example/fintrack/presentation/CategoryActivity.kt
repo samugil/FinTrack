@@ -24,7 +24,7 @@ import java.io.Serializable
 class CategoryActivity : AppCompatActivity() {
 
     private lateinit var viewModel: CategoryViewModel
-    private var selectedColor: Int = Color.TRANSPARENT
+    private var selectedColor: String = ""
     private var selectedIcon: Int = 0
 
     companion object {
@@ -41,7 +41,7 @@ class CategoryActivity : AppCompatActivity() {
         }
     }
 
-     override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.category_add)
 
@@ -65,7 +65,7 @@ class CategoryActivity : AppCompatActivity() {
         category?.let {
             // Atualizar a UI com os dados da categoria, se necessário
             findViewById<TextInputLayout>(R.id.til_new_category).editText?.setText(it.title)
-            selectedColor = Color.parseColor(it.color)
+            selectedColor = it.color
             selectedIcon = it.icon
             updateColorPreview()
             updateIconPreview()
@@ -89,7 +89,7 @@ class CategoryActivity : AppCompatActivity() {
         val btnCategoryCreate = findViewById<Button>(R.id.btn_category_create)
         btnCategoryCreate.setOnClickListener {
             val title = findViewById<TextInputLayout>(R.id.til_new_category).editText?.text.toString()
-            if (title.isNotEmpty() && selectedColor != Color.TRANSPARENT && selectedIcon != 0) {
+            if (title.isNotEmpty() && selectedColor != "" && selectedIcon != 0) {
                 val category = Category(title = title, color = selectedColor.toString(), icon = selectedIcon)
                 viewModel.insertCategory(category)
             } else {
@@ -103,7 +103,7 @@ class CategoryActivity : AppCompatActivity() {
         if (resultCode == Activity.RESULT_OK) {
             when (requestCode) {
                 REQUEST_SELECT_COLOR -> {
-                    selectedColor = data?.getIntExtra("selectedColor", Color.TRANSPARENT) ?: Color.TRANSPARENT
+                    selectedColor = data?.getStringExtra("selectedColor") ?: ""
                     updateColorPreview()
                 }
                 REQUEST_SELECT_ICON -> {
@@ -116,7 +116,7 @@ class CategoryActivity : AppCompatActivity() {
 
     private fun updateColorPreview() {
         val imgColorCategory = findViewById<ImageView>(R.id.img_color_category)
-        imgColorCategory.setBackgroundColor(selectedColor)
+        imgColorCategory.setBackgroundColor(Color.parseColor(selectedColor))
     }
 
     private fun updateIconPreview() {

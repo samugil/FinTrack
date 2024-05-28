@@ -65,7 +65,7 @@ class CategoryColorActivity : AppCompatActivity() {
 
         btnColor.setOnClickListener {
             val selectedColor = getSelectedColor()
-            if (selectedColor != -1) {
+            if (selectedColor != "") {
                 val resultIntent = Intent().apply {
                     putExtra("selectedColor", selectedColor)
                 }
@@ -78,7 +78,7 @@ class CategoryColorActivity : AppCompatActivity() {
         }
     }
 
-    private fun getSelectedColor(): Int {
+    private fun getSelectedColor(): String {
         val checkedRadioButtonId = when {
             rgColor1.checkedRadioButtonId != -1 -> rgColor1.checkedRadioButtonId
             rgColor2.checkedRadioButtonId != -1 -> rgColor2.checkedRadioButtonId
@@ -88,30 +88,30 @@ class CategoryColorActivity : AppCompatActivity() {
         }
 
         val selectedColor = when (checkedRadioButtonId) {
-            rbWhite.id -> Color.WHITE
-            rbBlack.id -> Color.BLACK
-            rbRed.id -> Color.RED
-            rbViolet.id -> Color.parseColor("#EE82EE") // Violet
-            rbOceanBlue.id -> Color.parseColor("#0077BE") // Ocean Blue
-            rbBlue.id -> Color.BLUE
-            rbWaterBlue.id -> Color.parseColor("#76D7EA") // Water Blue
-            rbWaterGreen.id -> Color.parseColor("#00FF7F") // Water Green
-            rbOceanGreen.id -> Color.parseColor("#2E8B57") // Ocean Green
-            rbLightYellow.id -> Color.parseColor("#FFFFE0") // Light Yellow
-            rbWaterMediumYellow.id -> Color.parseColor("#FFD700") // Medium Yellow
-            rbLightOrange.id -> Color.parseColor("#FFA07A") // Light Orange
-            rbMediumOrange.id -> Color.parseColor("#FFA500") // Medium Orange
-            rbBrown.id -> Color.parseColor("#A52A2A") // Brown
-            rbGrey.id -> Color.GRAY
-            rbMagenta.id -> Color.parseColor("#FF00FF") // Magenta
-            else -> Color.TRANSPARENT
+            rbWhite.id -> "#FFFFFF"
+            rbBlack.id -> "#FF000000"
+            rbRed.id -> "#F54336"
+            rbViolet.id -> "#EE82EE" // Violet
+            rbOceanBlue.id -> "#0077BE" // Ocean Blue
+            rbBlue.id -> "#1A96F0"
+            rbWaterBlue.id -> "#76D7EA" // Water Blue
+            rbWaterGreen.id -> "#00FF7F" // Water Green
+            rbOceanGreen.id -> "#2E8B57" // Ocean Green
+            rbLightYellow.id -> "#FFFFE0" // Light Yellow
+            rbWaterMediumYellow.id -> "#FFD700" // Medium Yellow
+            rbLightOrange.id -> "#FFA07A" // Light Orange
+            rbMediumOrange.id -> "#FFA500" // Medium Orange
+            rbBrown.id -> "#A52A2A" // Brown
+            rbGrey.id -> "#607D8A"
+            rbMagenta.id -> "#FF00FF" // Magenta
+            else -> "#00607D8A"
         }
         return selectedColor
     }
 
     override fun onBackPressed() {
         // Verifica se algum ícone está selecionado
-        if (getSelectedColor() == -1) {
+        if (getSelectedColor() == "") {
             Toast.makeText(this, "Por favor selecione uma cor para sua categoria", Toast.LENGTH_SHORT).show()
         } else {
             super.onBackPressed()

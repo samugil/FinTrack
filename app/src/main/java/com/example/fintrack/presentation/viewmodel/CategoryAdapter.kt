@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.graphics.toColorInt
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fintrack.R
 import com.example.fintrack.data.Category
@@ -15,9 +16,9 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>
     private var items: List<Category> = listOf()
 
     inner class CategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val categoryColor: View = itemView.findViewById(R.id.img_color_category)
-        val categoryIcon: ImageView = itemView.findViewById(R.id.img_icon_category)
-        val categoryName: TextView = itemView.findViewById(R.id.til_new_category)
+        val categoryColor: View = itemView.findViewById(R.id.categoryColor)
+        val categoryIcon: ImageView = itemView.findViewById(R.id.categoryIcon)
+        val categoryName: TextView = itemView.findViewById(R.id.categoryName)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
@@ -27,10 +28,13 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>
     }
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
-        val item = items[position]
-        holder.categoryColor.setBackgroundColor(Color.parseColor(item.color))
-        holder.categoryIcon.setImageResource(item.icon)
-        holder.categoryName.text = item.title
+        if(!items.isNullOrEmpty()){
+            val item = items[position]
+            holder.categoryColor.setBackgroundColor(Color.parseColor(item.color))
+            holder.categoryIcon.setImageResource(item.icon)
+            holder.categoryName.text = item.title
+        }
+
     }
 
     override fun getItemCount() = items.size
@@ -39,4 +43,6 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>
         this.items = newData
         notifyDataSetChanged()
     }
+
+
 }

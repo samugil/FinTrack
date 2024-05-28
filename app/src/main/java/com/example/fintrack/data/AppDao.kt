@@ -14,11 +14,17 @@ interface AppDao {
     @Query("SELECT * FROM Category")
     fun getAllCategories(): LiveData<List<Category>>
 
+    @Query("SELECT * FROM Category")
+    fun getAllCategory(): List<Category>
+
     @Query("SELECT * FROM Expenses")
-    fun getAllExpenses(): LiveData<List<Expenses>>
+    fun getAllExpenses(): List<Expenses>
 
     @Query("SELECT * FROM Category WHERE id = :id")
     fun getCategoryById(id: Int): LiveData<Category>
+
+    @Query("SELECT * FROM Category WHERE title = :name")
+    fun getCategoryByName(name: String): LiveData<Category>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertCategory(category: Category)
