@@ -13,6 +13,7 @@ import kotlinx.coroutines.launch
 class ExpenseWithCategoryViewModel(private val repository: FinTrackRepository) : ViewModel() {
 
 
+
     private val _expensesWithCategories = MutableLiveData<List<ExpenseWithCategory>>()
     val expensesWithCategories: LiveData<List<ExpenseWithCategory>> get() = _expensesWithCategories
     private val _insertComplete = MutableLiveData<Boolean>()
@@ -44,7 +45,7 @@ class ExpenseWithCategoryViewModel(private val repository: FinTrackRepository) :
         }
     }
 
-    private fun fetchExpensesWithCategories() {
+    fun fetchExpensesWithCategories() {
         viewModelScope.launch(Dispatchers.IO) {
             val expensesAll = repository.getAllExpenses()
             val categories = repository.getAllCategory()

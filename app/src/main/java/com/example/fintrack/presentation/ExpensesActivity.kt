@@ -138,11 +138,18 @@ class ExpensesActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        AlertDialog.Builder(this)
-            .setMessage("Ao fazer isso irá cancelar a inclusão de uma despesa")
+        val alertDialog = AlertDialog.Builder(this)
+            .setMessage("Ao fazer isso irá cancelar a inclusão de uma categoria")
             .setPositiveButton("Sim") { _, _ -> super.onBackPressed() }
             .setNegativeButton("Não", null)
             .show()
+
+        val positiveButton = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE)
+        positiveButton.setTextColor(resources.getColor(R.color.red))
+
+
+        val negativeButton = alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE)
+        negativeButton.setTextColor(resources.getColor(R.color.red))
     }
 
 }
