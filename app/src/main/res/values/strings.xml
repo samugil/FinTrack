@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name"></string>
+    <string name="app_name">FinTrack</string>
 
     <string name="category_icon">Category Icon</string>
     <string name="navigation_drawer_open">Open Navigation Drawer</string>
