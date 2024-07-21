@@ -68,6 +68,7 @@ class FinTrackActivity : AppCompatActivity() {
         rvExpenses.layoutManager = LinearLayoutManager(this)
         rvExpenses.adapter = expensesAdapter
 
+        viewModel.fetchExpensesWithCategories()
         viewModel.expensesWithCategories.observe(this, Observer { listExpenses ->
             if (listExpenses.isNullOrEmpty()) {
                 findViewById<LinearLayout>(R.id.ctn_content).visibility = View.VISIBLE
